@@ -39,26 +39,8 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer = quizBrain.answer();
     setState(() {
       quizBrain.nextQuestion();
-      if(quizBrain.isFinished() == true){
-        Alert(
-          context: context,
-          type: AlertType.error,
-          title: "QUESTION FINISHED",
-          desc: "Start Again?",
-          buttons: [
-            DialogButton(
-              child: Text(
-                "YES",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              onPressed: () { Navigator.pop(context);
-              },
-              width: 120,
-            )
-          ],
-        ).show();
-        quizBrain.reset();
-        scoreKeeper = [];
+      if(quizBrain.isFinished() == false){
+
       }
       if (userPickedAnswer == correctAnswer) {
         scoreKeeper.add(Icon(
@@ -144,9 +126,3 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 }
-
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
